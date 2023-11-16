@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 version_file = 'caxutils/version.py'
 
@@ -21,6 +21,16 @@ if __name__ == '__main__':
         version=get_version(),
         author='AoXuan Chen',
         author_email='cax1165@163.com',
+        url='https://github.com/chenaoxuan/CaxUtils.git',
+        license='Apache License 2.0',
         description='Open Source Universal Tool Library for Python Project',
-        long_description=get_readme()
+        long_description=get_readme(),
+        long_description_content_type='text/markdown',
+        keywords='python,pytorch,utils',
+        classifiers=[
+            'Development Status :: 4 - Beta',
+            'Operating System :: OS Independent',
+            'License :: OSI Approved :: Apache Software License',
+            'Programming Language :: Python :: 3',
+        ]
     )
