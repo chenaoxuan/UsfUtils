@@ -17,7 +17,7 @@ def get_readme():
 
 if __name__ == '__main__':
     setup(
-        name='caxutils',
+        name='usfutils',
         version=get_version(),
         author='AoXuan Chen',
         author_email='cax1165@163.com',
