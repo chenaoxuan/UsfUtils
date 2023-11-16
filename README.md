@@ -1,6 +1,6 @@
-# CaxUtils
+# UsfUtils
 
-This is an **open source universal tool library** for deep learning, machine learning, and other Python projects.
+This is an **open source universal tool library** named **Useful Utils**(UsfUtils) for Deep Learning, Machine Learning, and other Python projects.
 
 The project started on November 16, 2023 and aims to implement functions such as **log management**, **configuration management**, and **file/directory management**.
 
