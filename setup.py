@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version_file = 'caxutils/version.py'
+version_file = 'usfutils/version.py'
 
 
 def get_version():
@@ -21,7 +21,7 @@ if __name__ == '__main__':
         version=get_version(),
         author='AoXuan Chen',
         author_email='cax1165@163.com',
-        url='https://github.com/chenaoxuan/CaxUtils.git',
+        url='https://github.com/chenaoxuan/UsfUtils.git',
         license='Apache License 2.0',
         description='Open Source Universal Tool Library for Python Project',
         long_description=get_readme(),
