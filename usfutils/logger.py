@@ -40,8 +40,8 @@ def get_root_logger(log_path: str, logger_name: str = 'usfutils', logger_level=l
         file_handler.setFormatter(format_str)
         file_handler.setLevel(logger_level)
         logger.addHandler(file_handler)
+        logger.info(get_env_info())
     initialized_logger[logger_name] = True
-    logger.info(get_env_info())
     return logger
 
 
