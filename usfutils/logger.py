@@ -1,5 +1,5 @@
 """
-This file implements log management.
+Log management.
 """
 import os
 import logging

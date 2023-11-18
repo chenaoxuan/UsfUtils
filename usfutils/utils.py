@@ -1,5 +1,5 @@
 """
-This file implements other more basic operations.
+Other more basic operations.
 """
 import time
 

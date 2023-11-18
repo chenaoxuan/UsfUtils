@@ -1,5 +1,5 @@
 """
-This file implements operations related to paths, files, directories, etc.
+Operations related to paths, files, directories, etc.
 """
 import os
 from typing import Generator

@@ -1,5 +1,5 @@
 """
-This file implements distributed (mainly Pytorch) management.
+Distributed (mainly Pytorch) management.
 """
 import functools
 
