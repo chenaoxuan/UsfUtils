@@ -6,6 +6,11 @@ import logging
 from .dist import get_dist_info
 from .utils import get_time_str
 
+__all__ = [
+    'get_root_logger',
+    'get_env_info'
+]
+
 initialized_logger = {}
 
 
