@@ -1,10 +1,12 @@
 """
 Other more basic operations.
 """
-from typing import Optional
-import logging
-import random
+
 import time
+import random
+import logging
+import importlib
+from typing import Optional
 
 __all__ = [
     'get_time_str',
@@ -50,10 +52,9 @@ def set_seed_everything(seed: Optional[int] = None, deterministic: bool = False,
         if seed is None:
             seed = random.randint(min_value, max_value)
         elif not (min_value <= seed <= max_value):
-            logger.info(f"{seed} is not in bounds, Numpy accepts from {min_value} to {max_value}")
+            logger.warning(f"{seed} is not in bounds, Numpy accepts from {min_value} to {max_value}")
             seed = random.randint(min_value, max_value)
         np.random.seed(seed)
-        logger.info(f"Numpy's random seed is set to {seed}")
     except ImportError:
         pass
     try:
@@ -63,12 +64,11 @@ def set_seed_everything(seed: Optional[int] = None, deterministic: bool = False,
         if seed is None:
             seed = random.randint(min_value, max_value)
         elif not (min_value <= seed <= max_value):
-            logger.info(f"{seed} is not in bounds, Pytorch accepts from {min_value} to {max_value}")
+            logger.warning(f"{seed} is not in bounds, Pytorch accepts from {min_value} to {max_value}")
             seed = random.randint(min_value, max_value)
         torch.manual_seed(seed)
         if torch.cuda.is_available():
             torch.cuda.manual_seed_all(seed)
-            logger.info(f"Pytorch's random seed is set to {seed}")
             if deterministic:
                 torch.use_deterministic_algorithms(True)
             logger.info('Pytorch enables the use of deterministic algorithms, which may affect training speed.')
@@ -77,4 +77,20 @@ def set_seed_everything(seed: Optional[int] = None, deterministic: bool = False,
     if seed is None:
         seed = get_time_int()
     random.seed(seed)
-    logger.info(f"Python.random's random seed is set to {seed}")
+    logger.info(f"Global seed set to {seed}")
+
+
+def get_obj_from_str(string=str, reload: bool = False) -> object:
+    """
+    Import object from the complete module path string.
+    :param string: A complete object string path.
+    :param reload: Reload the module to support code hot updates.
+    :return: An object.
+    """
+    if string is None:
+        raise TypeError("string can not be None.")
+    module, cls = string.rsplit(".", 1)
+    if reload:
+        module_imp = importlib.import_module(module)
+        importlib.reload(module_imp)
+    return getattr(importlib.import_module(module), cls)

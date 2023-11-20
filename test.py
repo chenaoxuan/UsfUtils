@@ -1,6 +1,7 @@
-from usfutils.utils import get_time_str,get_time_int,set_seed_everything
+from usfutils.statistics import get_params_num
+from usfutils.utils import get_obj_from_str
 
 if __name__ == '__main__':
-    # print(get_time_str())
-    # print(get_time_int())
-    set_seed_everything(23,deterministic=True)
+    net = get_obj_from_str('usfutils.net.Net')(in_features=10, out_features=20)
+    _ = get_params_num(net, verbose=True)
+
