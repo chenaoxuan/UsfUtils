@@ -1,8 +1,6 @@
-import os
-from usfutils.logger import get_env_info, get_root_logger
-from usfutils.dist import get_dist_info
+from usfutils.utils import get_time_str,get_time_int,set_seed_everything
+
 if __name__ == '__main__':
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-    print(current_directory)
-    logger = get_root_logger(log_path=current_directory)
-    logger.info("Hello")
+    # print(get_time_str())
+    # print(get_time_int())
+    set_seed_everything(23,deterministic=True)

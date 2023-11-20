@@ -2,6 +2,7 @@
 Distributed (mainly Pytorch) management.
 """
 import functools
+from typing import Tuple
 
 __all__ = [
     'get_dist_info',
@@ -9,7 +10,7 @@ __all__ = [
 ]
 
 
-def get_dist_info():
+def get_dist_info() -> Tuple[int, int]:
     """
 
     :return:

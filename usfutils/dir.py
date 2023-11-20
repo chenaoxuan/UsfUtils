@@ -2,7 +2,7 @@
 Operations related to paths, files, directories, etc.
 """
 import os
-from typing import Generator
+from typing import Union,Generator
 
 from .utils import get_time_str
 
@@ -52,7 +52,7 @@ def mkdir_and_rename(path: str) -> None:
         raise Exception(f"Failed to create the directory: {e}.")
 
 
-def scandir(path: str, suffix: [str, tuple] = None, recursive: bool = False, full_path: bool = False) -> Generator:
+def scandir(path: str, suffix: Union[str, tuple] = None, recursive: bool = False, full_path: bool = False) -> Generator:
     """
     Scan a directory and retrieve all its sub files.
     :param path: Directory to retrieve.
