@@ -39,4 +39,4 @@ def master_only(func):
         if rank == 0:
             return func(*args, **kwargs)
 
-    return wrapper()
+    return wrapper
