@@ -33,7 +33,7 @@ def get_format_num(num: float) -> str:
         mul_acc *= 1000
         unit_index += 1
     num = int(round(num / int(mul_acc / 1000), -1) / 10)
-    if num == 100000 and unit_index + 1 < len(units) - 1:
+    if num == 100000 and unit_index + 1 <= len(units) - 1:
         unit_index += 1
         num = 100
     return str(int(num / 100)) + '.' + str(num % 100) + units[unit_index]
