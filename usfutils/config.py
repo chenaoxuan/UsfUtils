@@ -3,38 +3,41 @@ import os
 import sys
 import yaml
 from shutil import copyfile
-
+from typing import Union
 from .dist import master_only
 from .utils import get_time_asc
+from .dict import UsfDict
 
 __all__ = [
     'UsfConfig'
 ]
 
 
-class UsfConfig():
+class UsfConfig:
     """
     UsfConfig primary class.
     Currently, only yaml files with dict type after loading are supported.
     """
 
     @staticmethod
-    def load(path: str):
+    def load(path: str) -> UsfDict:
         if path is None:
             raise TypeError("path can not be None.")
         print(os.path.abspath(path))
         with io.open(os.path.abspath(path), 'r', encoding='utf-8') as f:
             obj = yaml.safe_load(f)
+        obj = UsfDict(obj)
         return obj
 
     @staticmethod
-    def to_yaml(obj: dict, path: str):
+    def to_yaml(obj: Union[UsfDict, dict], path: str):
         if not isinstance(obj, dict):
             raise TypeError("UsfConfig now only support dict")
         if path is None:
             raise TypeError("path can not be None.")
-        with io.open(os.path.abspath(path), 'w', encoding='utf-8') as f:
-            yaml.dump(obj, path)
+        obj = dict(obj)
+        with open(os.path.abspath(path), 'w', encoding='utf-8') as f:
+            yaml.dump(obj, f)
 
     @staticmethod
     @master_only
@@ -57,7 +60,7 @@ class UsfConfig():
             f.writelines(lines)
 
     @staticmethod
-    def dict_to_str(opt, indent_level=1):
+    def dict_to_str(opt: UsfDict, indent_level=1) -> str:
         """
         Indent dict according to hierarchical relationships and convert it to str.
         :param opt:
@@ -66,7 +69,7 @@ class UsfConfig():
         """
         msg = '\n'
         for k, v in opt.items():
-            if isinstance(v, dict):
+            if isinstance(v, UsfDict):
                 msg += ' ' * (indent_level * 2) + k + ':['
                 msg += UsfConfig.dict_to_str(v, indent_level + 1)
                 msg += ' ' * (indent_level * 2) + ']\n'
