@@ -2,7 +2,10 @@
 
 English</a> | <a href="README_CN.md">简体中文</a>
 
-This is an open-source universal toolkit for **Deep Learning**, **Machine Learning**, and other Python projects.
+[![PyPI](https://img.shields.io/pypi/v/usfutils)](https://pypi.org/project/usfutils/) [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
+
+This is an open-source universal toolkit named **Useful Utilities** for **Deep Learning**, **Machine Learning**, and
+other Python projects.
 
 ## 🚩Features
 

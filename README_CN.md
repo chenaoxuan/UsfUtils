@@ -2,7 +2,9 @@
 
 <a href="README.md">English</a> | 简体中文</a>
 
-这是一个用于**深度学习**、**机器学习**和其他Python项目的开源通用工具包。
+[![PyPI](https://img.shields.io/pypi/v/usfutils)](https://pypi.org/project/usfutils/) [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
+
+这是一个名为**Useful Utilities**的用于**深度学习**、**机器学习**和其他Python项目的开源通用工具包。
 
 ## 🚩特点？
 
