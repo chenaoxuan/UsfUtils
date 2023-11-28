@@ -6,7 +6,7 @@ This is an open-source universal toolkit for **Deep Learning**, **Machine Learni
 ## 🚩Features
 - Aiming to provide frequently-used functions mainly about **log management**, **configuration management**, and **file/directory management**
 - To help researchers and engineers avoid wasteful duplication of effort. 
-- Rely solely on native Python and does not depend on any other third-party package
+- Rely solely on native Python / Pytorch and does not depend on any other third-party package
 ## 🚀What's New?
 - 2023.11.27 Add statistical modules, such as statistical model parameters
 - 2023.11.17 Add basic log management functions: initialize logger and manage multi-process logs
