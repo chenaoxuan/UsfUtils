@@ -13,7 +13,8 @@ def get_format_num(num: float) -> str:
     """
     Automatically convert a positive number to its appropriate unit(thousand million billion) and round it to two
     decimal places.
-    :param num: A positive number :return: Formatted results
+    :param num: A positive number
+    :return: Formatted results
     """
     if num is None:
         raise TypeError('The num cannot be None')
