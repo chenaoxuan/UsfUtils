@@ -15,6 +15,7 @@ other Python projects.
 
 ## 🚀What's New?
 
+- 2023.11.29 Add object-load module; Release version 2.0.0
 - 2023.11.28 Add data type UsfDict and integrate it with UsfConfig; Release version 1.0.0
 - 2023.11.27 Add statistical modules, such as statistical model parameters
 - 2023.11.17 Add basic log management functions: initialize logger and manage multi-process logs
