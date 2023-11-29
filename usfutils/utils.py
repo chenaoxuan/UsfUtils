@@ -12,7 +12,8 @@ __all__ = [
     'get_time_str',
     'get_time_int',
     'get_time_asc',
-    'set_seed_everything'
+    'set_seed_everything',
+    'get_obj_from_str'
 ]
 
 

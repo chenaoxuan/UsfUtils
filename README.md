@@ -9,10 +9,9 @@ other Python projects.
 
 ## 🚩Features
 
-- Aiming to provide frequently-used functions mainly about **log management**, **configuration management**, and *
-  *file/directory management**
+- Aiming to provide frequently-used functions mainly about **log management**, **configuration management**, and **file/directory management**.
 - To help researchers and engineers avoid wasteful duplication of effort.
-- Rely solely on native Python / Pytorch and does not depend on any other third-party package
+- Rely solely on native Python / Pytorch and does not depend on any other third-party package.
 
 ## 🚀What's New?
 

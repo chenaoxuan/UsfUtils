@@ -4,6 +4,10 @@ The basic data type in usfutils: UsfDict, inherited from dict.
 from typing import Union
 import argparse
 
+__all__ = [
+    'UsfDict'
+]
+
 
 class UsfDict(dict):
     def __init__(self, d: dict = None, **kwards):
