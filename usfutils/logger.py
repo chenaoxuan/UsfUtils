@@ -4,7 +4,7 @@ Log management.
 import os
 import logging
 from .dist import get_dist_info
-from .utils import get_time_str
+from .time import get_time_str
 
 __all__ = [
     'get_root_logger',

@@ -33,6 +33,12 @@ class UsfDict(dict):
 
     __setitem__ = __setattr__
 
+    def __getattr__(self, name):
+        try:
+            return self[name]
+        except KeyError:
+            raise AttributeError(name)
+
     def update(self, e: Union['UsfDict', dict, argparse.Namespace] = None, verbose=True, **kwargs):
         d = e or dict()
         if isinstance(d, argparse.Namespace):

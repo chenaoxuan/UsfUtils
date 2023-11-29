@@ -5,74 +5,51 @@ import yaml
 from shutil import copyfile
 from typing import Union
 from .dist import master_only
-from .utils import get_time_asc
+from .time import get_time_asc
 from .dict import UsfDict
 
 __all__ = [
-    'UsfConfig'
+    'load_yaml',
+    'dict_to_yaml',
+    'copy_opt_file'
 ]
 
 
-class UsfConfig:
+def load_yaml(path: str) -> UsfDict:
+    if path is None:
+        raise TypeError("path can not be None.")
+    print(os.path.abspath(path))
+    with io.open(os.path.abspath(path), 'r', encoding='utf-8') as f:
+        obj = yaml.safe_load(f)
+    obj = UsfDict(obj)
+    return obj
+
+
+def dict_to_yaml(obj: Union[UsfDict, dict], path: str):
+    if not isinstance(obj, dict):
+        raise TypeError("UsfConfig now only support dict")
+    if path is None:
+        raise TypeError("path can not be None.")
+    obj = dict(obj)
+    with open(os.path.abspath(path), 'w', encoding='utf-8') as f:
+        yaml.dump(obj, f)
+
+
+@master_only
+def copy_opt_file(file_path: str, experiments_path: str) -> None:
     """
-    UsfConfig primary class.
-    Currently, only yaml files with dict type after loading are supported.
+    Copy the yaml file to the experiment root
+    :param file_path: Configuration file yaml.
+    :param experiments_path: Experimental Path.
+    :return:
     """
-
-    @staticmethod
-    def load(path: str) -> UsfDict:
-        if path is None:
-            raise TypeError("path can not be None.")
-        print(os.path.abspath(path))
-        with io.open(os.path.abspath(path), 'r', encoding='utf-8') as f:
-            obj = yaml.safe_load(f)
-        obj = UsfDict(obj)
-        return obj
-
-    @staticmethod
-    def to_yaml(obj: Union[UsfDict, dict], path: str):
-        if not isinstance(obj, dict):
-            raise TypeError("UsfConfig now only support dict")
-        if path is None:
-            raise TypeError("path can not be None.")
-        obj = dict(obj)
-        with open(os.path.abspath(path), 'w', encoding='utf-8') as f:
-            yaml.dump(obj, f)
-
-    @staticmethod
-    @master_only
-    def copy_opt_file(file_path: str, experiments_path: str) -> None:
-        """
-        Copy the yaml file to the experiment root
-        :param file_path: Configuration file yaml.
-        :param experiments_path: Experimental Path.
-        :return:
-        """
-        if file_path is None or experiments_path is None:
-            raise TypeError("path can not be None.")
-        cmd = ' '.join(sys.argv)
-        filename = os.path.join(experiments_path, os.path.basename(file_path))
-        copyfile(file_path, filename)
-        with open(filename, 'r+') as f:
-            lines = f.readlines()
-            lines.insert(0, f'# Generate Time: {get_time_asc()}\n# Command: {cmd}\n\n')
-            f.seek(0)
-            f.writelines(lines)
-
-    @staticmethod
-    def dict_to_str(opt: UsfDict, indent_level=1) -> str:
-        """
-        Indent dict according to hierarchical relationships and convert it to str.
-        :param opt:
-        :param indent_level:
-        :return:
-        """
-        msg = '\n'
-        for k, v in opt.items():
-            if isinstance(v, UsfDict):
-                msg += ' ' * (indent_level * 2) + k + ':['
-                msg += UsfConfig.dict_to_str(v, indent_level + 1)
-                msg += ' ' * (indent_level * 2) + ']\n'
-            else:
-                msg += ' ' * (indent_level * 2) + k + ': ' + str(v) + '\n'
-        return msg
+    if file_path is None or experiments_path is None:
+        raise TypeError("path can not be None.")
+    cmd = ' '.join(sys.argv)
+    filename = os.path.join(experiments_path, os.path.basename(file_path))
+    copyfile(file_path, filename)
+    with open(filename, 'r+') as f:
+        lines = f.readlines()
+        lines.insert(0, f'# Generate Time: {get_time_asc()}\n# Command: {cmd}\n\n')
+        f.seek(0)
+        f.writelines(lines)

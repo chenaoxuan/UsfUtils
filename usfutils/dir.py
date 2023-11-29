@@ -4,7 +4,7 @@ Operations related to paths, files, directories, etc.
 import os
 from typing import Union, Generator
 
-from .utils import get_time_str
+from .time import get_time_str
 
 __all__ = [
     'mkdir_and_exist',

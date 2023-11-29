@@ -2,43 +2,14 @@
 Other more basic operations.
 """
 
-import time
 import random
 import logging
-import importlib
 from typing import Optional
+from .time import get_time_int
 
 __all__ = [
-    'get_time_str',
-    'get_time_int',
-    'get_time_asc',
     'set_seed_everything',
-    'get_obj_from_str'
 ]
-
-
-def get_time_str() -> str:
-    """
-
-    :return:
-    """
-    return time.strftime('%Y%m%d_%H%M%S', time.localtime())
-
-
-def get_time_int() -> int:
-    """
-
-    :return:
-    """
-    return int(time.time())
-
-
-def get_time_asc() -> str:
-    """
-    e.g. 'Sat Jun 06 16:26:11 1998'.
-    :return:
-    """
-    return time.asctime()
 
 
 def set_seed_everything(seed: Optional[int] = None, deterministic: bool = False,
@@ -96,19 +67,3 @@ def set_seed_everything(seed: Optional[int] = None, deterministic: bool = False,
         seed = get_time_int()
     random.seed(seed)
     logger.info(f"Global seed set to {seed}")
-
-
-def get_obj_from_str(string=str, reload: bool = False) -> object:
-    """
-    Import object from the complete module path string.
-    :param string: A complete object string path.
-    :param reload: Reload the module to support code hot updates.
-    :return: An object.
-    """
-    if string is None:
-        raise TypeError("string can not be None.")
-    module, cls = string.rsplit(".", 1)
-    if reload:
-        module_imp = importlib.import_module(module)
-        importlib.reload(module_imp)
-    return getattr(importlib.import_module(module), cls)
