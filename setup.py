@@ -27,6 +27,9 @@ if __name__ == '__main__':
         long_description=get_readme(),
         long_description_content_type='text/markdown',
         keywords='python,pytorch,utils',
+        install_requires=[
+            'pyyaml'
+        ],
         classifiers=[
             'Development Status :: 4 - Beta',
             'Operating System :: OS Independent',
