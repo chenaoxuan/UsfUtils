@@ -24,7 +24,6 @@ def mkdir_and_exist(path: str) -> None:
     if not os.path.exists(path):
         try:
             os.mkdir(path)
-            print(f"Directory '{path}' created.")
         except OSError as e:
             raise Exception(f"Failed to create the directory: {e}.")
     else:
@@ -48,7 +47,6 @@ def mkdir_and_rename(path: str) -> None:
             raise Exception(f"Failed to rename the directory: {e}.")
     try:
         os.makedirs(path)
-        print(f"Directory '{path}' created.")
     except OSError as e:
         raise Exception(f"Failed to create the directory: {e}.")
 
