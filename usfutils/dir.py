@@ -47,7 +47,7 @@ def mkdir_and_rename(path: str) -> None:
         except OSError as e:
             raise Exception(f"Failed to rename the directory: {e}.")
     try:
-        os.mkdir(path)
+        os.makedirs(path)
         print(f"Directory '{path}' created.")
     except OSError as e:
         raise Exception(f"Failed to create the directory: {e}.")
