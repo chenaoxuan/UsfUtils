@@ -23,6 +23,7 @@ def set_seed_everything(seed: Optional[int] = None, deterministic: bool = False,
             np.random.seed(np.random.get_state()[1][0] + worker_id)
         dataloader = DataLoader(dataset, batch_size=2, num_workers=2, worker_init_fn=worker_init_fn)
     '''
+    :param logger: Logger
     :param seed: The integer value seed for global random state. If `None`, will select it randomly.
     :param deterministic: Some other operations of pytorch will also have strict determinacy, but this option may reduce training speed.
     :return: None
