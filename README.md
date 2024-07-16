@@ -1,6 +1,6 @@
 # UsfUtils
 
-English</a> | <a href="README_CN.md">简体中文</a>
+English</a> | <a href="README_ZH.md">简体中文</a>
 
 [![PyPI](https://img.shields.io/pypi/v/usfutils)](https://pypi.org/project/usfutils/) [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 
